@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prix total des réservations par voiture</title>
+</head>
+<body style="background-color: #DBEAF2;">
+    <h1>Prix total des réservations pour la période du {{ debut_periode }} au {{ fin_periode }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Voiture</th>
+                <th>Prix total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for voiture_id, prix_total in prix_total_par_voiture.items %}
+                {% with voiture=voiture_id|get_object_by_id:"Voiture" %}
+                    <tr>
+                        <td>{{ voiture.genre }} {{ voiture.modele }}</td>
+                        <td>{{ prix_total }}</td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

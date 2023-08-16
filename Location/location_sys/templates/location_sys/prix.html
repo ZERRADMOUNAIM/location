@@ -1,0 +1,60 @@
+{% extends 'location_sys/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prix de réservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Set margin to 0 to remove default body margin */
+            padding: 0; /* Set padding to 0 to remove default body padding */
+            background-color: #DBEAF2;
+            display: flex;
+            justify-content: center; /* Aligns content horizontally */
+            align-items: center; /* Aligns content vertically */
+            height: 100vh; /* Sets the height of the body to the full viewport height */
+            overflow-y: hidden; 
+            overflow-x: hidden; 
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        .content-wrapper {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    position: relative;
+    left: 380px;
+    background-color: #07c8e234;
+}
+
+    h2{
+        padding: 10px 3px;
+        left: 290px;
+        position: relative;
+        width: 280px;
+        background: #f92121bd;;
+        border-radius: 10% 15%;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- <h1>Prix de réservation</h1> -->
+        <h1>Le revenu de cette Journée est :<h2>{{ prix }} DH</h2></h1>
+        <a style="color: rgb(43, 16, 142);" href="{% url 'reservation' %}">Retourner à la page précédente</a>
+    </div>
+</body>
+</html>
+{% endblock %}

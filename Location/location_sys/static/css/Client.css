@@ -1,0 +1,57 @@
+/* Add your custom styles here */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #DBEAF2;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+input {
+  border-radius: 4px;
+  padding: 3px;
+  width: 500px;
+}
+
+button[type="submit"] {
+  background-color: #e8d5c4;
+  color: #1a1918;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  width: 25%;
+  margin-right: 75%;
+}
+
+button:hover {
+  background-color: #cf9f75;
+}
+
+.BigContainer {
+  padding-top: 20px;
+  margin: 100px;
+  padding-bottom: 100px;
+  width: 80%;
+}

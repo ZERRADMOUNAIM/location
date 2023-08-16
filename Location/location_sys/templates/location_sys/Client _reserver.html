@@ -1,0 +1,296 @@
+{% extends 'location_sys/base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client List</title>
+    <style>
+        body
+        {
+            overflow-x: hidden;
+            background-color: #DBEAF2;
+        }
+
+      .BigContainer {
+        padding-top: 20px;
+        margin: 100px;
+        padding-bottom: 100px;
+        width: 80%;
+      }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    /* th{
+        font-size: 15px;
+    } */
+
+    th, td {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #07c8e234;
+        text-align: left;
+    }
+
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+    .btn {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-left: 8px;
+  text-decoration: none;
+}
+.supprimer{
+  background: #e45151;
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.supprimer:hover {
+  transform: scale(1.125);
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+
+.modifier{
+  background: #FFFBEB;
+  color: black;
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.modifier:hover {
+  transform: scale(1.125);
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+.continair-button{
+    display: flex;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 70px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+}
+
+.clienList
+{
+    text-align: center;
+    margin: 50px;
+}
+
+.back-link {
+            background-color: #008CBA; /* Blue background */
+            border: none; /* No borders */
+            color: white; /* White text */
+            padding: 10px 20px; /* Some padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* No underline */
+            display: inline-block;
+            font-size: 16px; /* Big text */
+            margin: 4px 2px; /* Some margin */
+            cursor: pointer; /* Pointer/hand icon on hover */
+            border-radius: 12px; /* Rounded corners */
+            transition-duration: 0.4s; /* Transition effects */
+        }
+
+        .back-link:hover {
+            background-color: #00688B; /* Change the background color on hover */
+            color: white; /* Keep the text color white on hover */
+        }
+
+
+   .overdue {
+    background-color: #fa0000bd; /* Red background color */
+    color: #fff; /* White text color */
+}
+.overdue:hover {
+  color: rgb(233, 27, 27);
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <div class="search">
+               <input type="text" class="searchTerm" id="searchInput" placeholder="Que cherches-tu?">
+               <button type="submit" class="searchButton">
+                 <i class="fa fa-search" style="margin-top: 6px;"></i>
+              </button>
+        </div>
+    </header>
+    <div class="BigContainer">
+        <h1 class="clienList">Clients avec réservations en cours</h1>
+        <a href="{% url 'client_list-page' %}" class="back-link">Historique des clients...</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>CNI</th>
+                    <th>Numero de telephone</th>
+                    <th>Email</th>
+                    <th>Matricule</th>
+                    <th>Nom de voiture </th>
+                    <th>Date de reservation</th>
+                    <th>Date de retour</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.prenom }}</td>
+                        <td>{{ client.CNE }}</td>
+                        <td>{{ client.N_Tele }}</td>
+                        <td>{{ client.Email }}</td>
+                        <td>{{ client.Matricule }}</td>
+                        <td>{{ client.NomVoiture  }}</td>
+                        <td>{{ client.Date_reservation }}</td>
+                        <td>{{ client.Date_retour }}</td>
+                        <td>
+                            <div class="continair-button">
+                          <a href="{% url 'update_client' client.id %}" class="btn modifier" >modifier</a>
+                          <form action="{% url 'delete_cl1-page' client.id %}" method="post" id="deleteForm">
+                            {% csrf_token %}
+                            <input type="submit" class="btn supprimer" value="Supprimer" onclick="confirmDeletion(event)">
+                          </form>
+                            </div>
+                </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+function parseDateString(dateString) {
+  var monthAbbreviations = {
+    "Jan.": 0, "Feb.": 1, "Mar.": 2, "Apr.": 3,
+    "May.": 4, "Jun.": 5, "Jul.": 6, "Aug.": 7,
+    "Sep.": 8, "Oct.": 9, "Nov.": 10, "Dec.": 11
+  };
+
+  var dateComponents = dateString.split(" ");
+  var month = monthAbbreviations[dateComponents[0]];
+  var day = parseInt(dateComponents[1].replace(",", ""));
+  var year = parseInt(dateComponents[2].replace(",", ""));
+
+  return new Date(year, month, day);
+}
+
+const rows = document.querySelectorAll("tbody tr");
+    const currentDate = new Date();
+
+    rows.forEach(row => {
+        const returnDateStr = row.querySelector("td:nth-child(10)").textContent;
+        const returnDate = parseDateString(returnDateStr);
+        
+        if (returnDate < currentDate) {
+            row.classList.add("overdue");
+        }
+    });
+
+
+
+    // Add an event listener to the search input field
+    document.getElementById("searchInput").addEventListener("input", function () {
+        // Get the user input from the search bar
+        const searchTerm = this.value.toLowerCase();
+
+        // Get all the rows in the table body
+        const rows = document.querySelectorAll("tbody tr");
+
+        // Loop through each row and check if the search term matches any of the columns
+        rows.forEach(row => {
+            const columns = row.getElementsByTagName("td");
+            let showRow = false;
+            for (let i = 0; i < columns.length; i++) {
+                const columnText = columns[i].textContent.toLowerCase();
+                if (columnText.includes(searchTerm)) {
+                    showRow = true;
+                    break;
+                }
+            }
+            // Show/hide the row based on whether the search term matches any column
+            row.style.display = showRow ? "" : "none";
+        });
+    });
+
+    function confirmDeletion(event) {
+  event.preventDefault(); // Prevent the form submission before confirmation
+
+  if (confirm("Êtes-vous sûr de vouloir supprimer ce client ?")) {
+    document.getElementById("deleteForm").submit(); // Proceed with form submission
+  } else {
+    // If the user cancels the deletion, do nothing
+  }
+}
+
+
+</script>
+</html>
+{% endblock %}

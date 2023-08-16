@@ -1,0 +1,81 @@
+{% extends 'location_sys/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client modifier</title>
+    <style>
+      body {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: #DBEAF2;
+}
+
+form {
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 637px;
+margin: 0 auto;
+flex-direction: column;
+padding: 20px;
+background-color: #000000;
+border-radius: 40px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+color: white;
+}
+
+input {
+border-radius: 8px;
+padding: 4px;
+width: 589px;
+}
+
+
+.btn-success{
+background-color: #e8d5c4;
+color: #1a1918;
+border: none;
+padding: 10px 20px;
+border-radius: 4px;
+cursor: pointer;
+width: 25%;
+margin-right: 69%;
+}
+
+.btn-success:hover {
+background-color: #cf9f75;
+}
+
+h1 {
+  text-align: center;
+  margin: 2px
+}
+  </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            <h1 class="alert alert-info">Modifier les informations:</h1>
+             <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn-success" value="Modifier"> 
+                <a style="color: white;" href="{% url 'bank' %}">Retourner au page precident</a>
+            </form> 
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

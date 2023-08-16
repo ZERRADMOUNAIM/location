@@ -1,0 +1,76 @@
+{% extends 'location_sys/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Réservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #DBEAF2;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #030b50;
+            position: relative;
+            left: 620px;
+            top: 180px;
+        }
+
+        form {
+    border-radius: 3%;
+    WIDTH: 40%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 200px;
+    left: 400px;
+    BACKGROUND: #07c8e234;
+    PADDING: 59px 56px;
+}
+
+        label {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        input[type="date"], input[type="submit"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 150px;
+        }
+        input[type="date"]{
+            width: 171px;
+        }
+
+        input[type="submit"] {
+            background: #f92121bd;
+            color: #fff;
+            cursor: pointer;
+            font-size: medium;
+            font-weight: bold;
+            font: initial;
+            margin-top: 20px;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Revenu d'une Journée</h1>
+    <div class="from">
+    <form method="POST" action="{% url 'prix_total' %}">
+        {% csrf_token %}
+        <label for="date">Date souhaitée</label>
+        <input type="date" id="date" name="date" required>
+        <input type="submit" value="Calculer le revenu">
+    </form>
+
+</body>
+</html>
+{% endblock %}

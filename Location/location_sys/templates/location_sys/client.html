@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- {% load static %} 
+
+    <link rel="stylesheet" href="{% static 'css/client.css' %}" />-->
+    <style>
+        /* Add your custom styles here */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #DBEAF2;
+}
+
+form {
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 637px;
+margin: 0 auto;
+flex-direction: column;
+padding: 20px;
+background-color: #000000;
+border-radius: 40px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+input {
+  border-radius: 4px;
+  padding: 3px;
+  width: 500px;
+}
+
+
+button[type="submit"] {
+  background-color: #e8d5c4;
+  color: #1a1918;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  width: 25%;
+  margin-right: 75%;
+}
+
+button:hover {
+  background-color: #cf9f75;
+}
+
+    </style>
+
+    <title>add client</title>
+  </head>
+  <body>
+    
+    <form action="" method="POST">
+      {% csrf_token %} {{form.as_p}}
+      <button type="submit" class="btn">Ajouter</button>
+      <a style="color: aliceblue" href="{% url 'voiture_dispo-page' %}">retouner au page précident</a
+      >
+    </form>
+  </body>
+</html>

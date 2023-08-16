@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #DBEAF2;
+}
+form{
+    width: 500px;
+    height: max-content;
+    padding: 10px 25px;
+}
+
+/* color form */

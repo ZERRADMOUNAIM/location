@@ -1,0 +1,175 @@
+{% extends 'location_sys/base.html' %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/voiture_dispo.css' %}" />
+    <title>voiture dispo</title>
+    <style>
+
+      .btn-add-voiture {
+        display: inline-block;
+        background-color: #00B4CC;
+        color: whitfloralwhitee;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-add-voiture:hover {
+        border: 2px solid #006ac0e0;
+        background-color: #006ac0e0; /* Couleur de fond au survol */
+      }
+
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+      .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+      }
+
+      .searchTerm {
+        width: 100%;
+        border: 3px solid #00B4CC;
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+      }
+
+      .searchTerm:focus{
+        color: #00B4CC;
+      }
+
+      .searchButton {
+        width: 70px;
+        height: 36px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      /*Resize the wrap to see the search bar change!*/
+      .wrap{
+        width: 30%;
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 50px;
+      }
+      
+
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="{% url 'voiture-page' %}" class="btn-add-voiture"
+        >Ajouter une nouvelle voiture</a
+      >
+    </header>
+    <div class="BigContainer">
+      
+      <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="Que cherches-tu?">
+           <button type="submit" class="searchButton">
+             <i class="fa fa-search" style="margin-top: 6px;"></i>
+          </button>
+        </div>
+     </div>
+      {% for v in voitures %} {% if v.reserver == False %}
+      <div class="container">
+        <div class="wrapper">
+          
+        {% if v.carImage%}
+        <img src="{{v.carImage.url}}" alt="Yarbi">
+                
+        {% endif %}
+
+          <div class="text">
+            <h1>{{ v.genre }} {{ v.modele }}</h1>
+            <h3 >MATRICULE : {{ v.matricule }}</h3>
+            <p>{{ v.description }}</p>
+            <h2>{{ v.prix }} DH/jour</h2>
+          </div>
+        </div>
+        <div class="button-wrapper">
+           <!-- <form action="" method="post">  -->
+             <!-- {% csrf_token %}  -->
+            <button class="btn Reserver">
+              <a href="{% url 'register_client-page' v.id %}">Reserver</a>
+            </button>
+          <!-- </form> -->
+         <a href="{% url 'update_voiture'  v.id %}" class="btn fill">Modifier</a>
+         <form action="{% url 'delete_v-page' v.id %}" method="post" id="deleteForm-{{ v.id }}">
+          {% csrf_token %}
+          <button class="btn supprimer" onclick="confirmDeletion(event, {{ v.id }})">
+            <a>Supprimer</a>
+          </button>
+        </form>
+        </div>
+      </div>
+      {% endif %} {% endfor %}
+    </div>
+  </body>
+      <script>
+        function performSearch() {
+          const searchTerm = document.querySelector(".searchTerm").value.toLowerCase();
+          const cards = document.querySelectorAll(".container"); // Change this selector to match the cards' container
+
+          cards.forEach(card => {
+            const cardTitle = card.querySelector("h1").textContent.toLowerCase();
+            const cardMatricule = card.querySelector("h3").textContent.toLowerCase();
+            const cardPrice = card.querySelector("h2").textContent.toLowerCase();
+
+            const titleMatch = cardTitle.includes(searchTerm);
+            const matriculeMatch = cardMatricule.includes(searchTerm);
+            const priceMatch = cardPrice.includes(searchTerm);
+
+            if (titleMatch || matriculeMatch || priceMatch) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
+
+  
+    // Event listener for the search input
+    document.querySelector(".searchTerm").addEventListener("input", performSearch);
+
+
+  function confirmDeletion(event, carId) {
+  event.preventDefault(); // Prevent the form submission before confirmation
+
+  if (confirm("Êtes-vous sûr de vouloir supprimer cette voiture ?")) {
+    document.getElementById("deleteForm-" + carId).submit(); // Proceed with form submission for the specific car
+  } else {
+    // If the user cancels the deletion, do nothing
+  }
+}
+ </script>
+  
+
+</html>
+{% endblock %} 

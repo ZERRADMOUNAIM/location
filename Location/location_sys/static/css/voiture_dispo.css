@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+/* 
+lets see */
+
+body{
+display: flex;
+flex-direction: row;
+overflow-x: hidden;
+background-color: #DBEAF2; 
+}
+
+.BigContainer{
+     display: flex;
+     flex-wrap: wrap;
+     position: relative;
+     width: 120%;
+     padding-top: 50px;
+
+}
+
+div.container:hover
+{
+    background-color: #127497;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.125);
+}
+
+.container {
+  margin-left: 100px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: #93c5e0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: black;
+  padding: 50px;
+  filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  margin: 50px;
+  overflow: hidden;
+  justify-content: space-between;
+  height: 450px; 
+}
+
+img {
+  width: 150%;
+  height: 200px;
+  object-fit: cover;
+  position: relative;
+  right: 25%;
+  border-radius: 5%;
+  bottom: 30px;
+}
+
+
+.wrapper {
+  width: 250px;
+  height: 300px
+}
+
+.banner-image {
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.255);
+}
+
+h1 {
+  font-family: "Righteous", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 150%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+  margin-top: 15px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+
+.outline {
+  background: transparent;
+  color: rgba(17, 25, 40, 0.25);
+  border: 1px solid rgba(17, 25, 40, 0.25);
+  transition: all 0.3s ease;
+}
+
+.outline:hover {
+  transform: scale(1.125);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.fill {
+  background: #FFFBEB;
+  border: 1px solid #9e9e9e;
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: black;
+}
+
+.fill:hover {
+  transform: scale(1.125);
+  background: #FFFBEB;
+  transition: all 0.3s ease;
+  color: black;
+}
+
+.supprimer{
+  background: #e45151;
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.Reserver{
+  background: #0d93c3e0;
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.supprimer:hover {
+  transform: scale(1.125);
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+
+.Reserver:hover {
+  transform: scale(1.125);
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+
+.text{
+  position: relative;
+  bottom:3%;
+}

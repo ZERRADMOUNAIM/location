@@ -1,0 +1,223 @@
+{% extends 'location_sys/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        /* Déplacez les styles dans la feuille de style externe pour une meilleure organisation */
+        body {
+            background-image: url("{% static 'Car-Rent.jpg' %}");
+            margin: 0;
+            padding: 0;
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 100%;
+        }
+
+        
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap');
+
+:root {
+    --background: #2C2C2C;
+	--active: #9bd2f0;	
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials-wrapper {
+	position: relative;
+	left: 210px;
+	top: 265px;
+}
+
+.socials-menu {
+	opacity: 0;	
+	transition: opacity 0.5s;
+}
+
+.active > .socials-menu {
+	opacity: 1;	
+}
+
+.share-button {
+	position: absolute;
+	border: none;
+	cursor: pointer;
+	z-index: 2;
+	transition: all 0.4s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	outline: 2px solid white;
+	outline-offset: 3px;
+}
+
+.share-button img {
+	height: 32px;
+	width: 32px;
+}
+
+ .share-button {
+	background-color: var(--active);
+	transform: scale(1.03);
+	border: 2px solid black;
+}
+
+ .share-button:hover {
+	background-color: #3db2f2;
+	transform: scale(1.03);
+	border: 2px solid black;
+}
+
+.active .share-button {
+	background-color: rgb(223, 9, 9);
+	transform: scale(1.03);
+	border: 2px solid black;
+}
+
+.social {
+	position: absolute;
+	list-style: none;
+	transition: all 0.5s ease-in-out;
+	display: grid;
+	cursor: pointer;
+	place-items: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	outline: 2px solid white;
+	outline-offset: 3px;
+	border: 2px solid black;
+}
+
+.social img {
+	height: 32px;
+	width: 32px;
+	transition: all 0.3s;
+}
+
+.social a {
+	display: grid;
+	cursor: pointer;
+	place-items: center;
+}
+
+.social:hover img {
+    transform: scale(1.10);
+}
+
+.active .social:nth-child(1) {
+	transform: translateX(-82px);
+}
+
+
+.active .social:nth-child(1):hover {
+	background: radial-gradient(
+        circle at 30% 107%, #fdf497 0%, 
+        #fdf497 5%, #fd5949 45%,
+        #d6249f 60%,#285AEB 90%
+    ); 
+
+	
+}
+
+.active .social:nth-child(2) {
+	transform: translateY(-82px);
+}
+
+.active .social:nth-child(2):hover {
+	background-color: #1D9BF0;
+}
+
+.active .social:nth-child(3) {
+	transform: translateX(82px);
+}
+
+.active .social:nth-child(3):hover {
+	background: #25D363;
+}
+
+.active .social:nth-child(4) {
+	transform: translateY(82px);
+}
+
+.active .social:nth-child(4):hover {
+	background-color: #e52d27;
+}
+    </style>
+</head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Social Buttons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="socials-wrapper">
+			<div class="share-button">
+                <img src="{% static 'share.png' %}"  alt="Share On Socials"/>
+			</div>
+			<menu class="socials-menu">
+				<li class="social">
+					<a href="https://www.instagram.com/" title="Instagram" target="_blank">
+						<img src="{% static 'ig.png' %}" alt="Instagram" />
+					</a>
+				</li>
+                <li class="social">
+					<a href="https://twitter.com/" title="Twitter" target="_blank">
+						<img src="{% static 'tw.png' %}" alt="Twitter" />
+					</a>
+				</li>
+                <li class="social" title="Threads">
+					<a href="https://www.whatsapp.com/" target="_blank">
+						<img src="{% static 'whatsapp.png' %}"alt="Whatssapp" />
+					</a>
+				</li>
+
+			</menu>
+		</div>
+    </body>
+    <script>
+        
+const shareButton = document.querySelector('.share-button');
+const toggleSocials = () => {
+    const socialsWrapper = document.querySelector('.socials-wrapper')
+    const shareButtonImage = shareButton.querySelector('img')
+    
+    socialsWrapper.classList.toggle('active')
+
+    if (shareButtonImage.src.includes('share')) {
+        shareButtonImage.src = "{% static 'Close.png' %}" ;
+    } else {
+        shareButtonImage.src = "{% static 'share.png' %}" ;
+    }
+}
+
+shareButton.addEventListener('click', toggleSocials);
+    </script>
+</html>
+{% endblock %}
